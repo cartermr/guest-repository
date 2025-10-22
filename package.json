@@ -1,0 +1,31 @@
+{
+  "name": "fpe-guest-registry",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon --exec ts-node ./src/server/server.ts",
+    "build-server": "tsc",
+    "client": "cd src/client && npm run dev",
+    "build-client": "cd src/client && npm run build",
+    "build": "npm run build-server && npm run build-client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "npm run build && nodemon ./dist/server.js"
+  },
+  "author": "Matt Carter",
+  "type": "commonjs",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.9.1",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

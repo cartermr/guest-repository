@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                // Specifies the JavaScript version to compile to
+    "module": "CommonJS",             // Use CommonJS for Node.js compatibility
+    "rootDir": "./src/server",               // Root directory of your TypeScript files
+    "outDir": "./dist",               // Output directory for compiled JavaScript files
+    "strict": true,                   // Enable all strict type-checking options
+    "esModuleInterop": true,          // Allow default imports from CommonJS modules
+    "forceConsistentCasingInFileNames": true, // Enforce consistent file naming
+    "skipLibCheck": true,             // Skip type checking of declaration files
+    "moduleResolution": "node",       // Resolve modules in Node.js style
+    "resolveJsonModule": true,        // Allow importing JSON files
+    "types": ["node"]                 // Include Node.js type definitions
+  },
+  "include": ["src/server/**/*"],            // Include all TypeScript files in the src folder
+  "exclude": ["node_modules", "dist"] // Exclude unnecessary folders
+}
