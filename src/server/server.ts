@@ -6,11 +6,7 @@ import express, { Express } from 'express';
 import guestRegistryDB from './database/database';
 import guestRoutes from './routes/guestRoutes';
 
-// guestRegistryDB.initializeDatabase();
-
-console.log('======================== Main');
-console.log(guestRegistryDB.isOpen);
-console.log('========================');
+guestRegistryDB.initializeDatabase();
 
 const server: Express = express();
 const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 3000;

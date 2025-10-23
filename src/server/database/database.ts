@@ -2,8 +2,17 @@ import { DatabaseSync } from 'node:sqlite'
 import path from 'node:path'
 
 class GuestRegistryDatabase extends DatabaseSync {
-    constructor() {
+    private static instance: GuestRegistryDatabase
+
+    private constructor() {
         super(path.join(__dirname, process.env.DB_NAME || 'guest-registry.db'), { open: false })
+    }
+
+    public static getInstance(): GuestRegistryDatabase {
+        if (!GuestRegistryDatabase.instance) {
+            GuestRegistryDatabase.instance = new GuestRegistryDatabase()
+        }
+        return GuestRegistryDatabase.instance
     }
 
     private createTables(): void {
@@ -40,4 +49,4 @@ class GuestRegistryDatabase extends DatabaseSync {
     }
 }
 
-export = new GuestRegistryDatabase()
+export = GuestRegistryDatabase.getInstance();
