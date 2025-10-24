@@ -23,14 +23,15 @@ class GuestRegistryDatabase extends DatabaseSync {
         const createGuestTable = this.prepare(`
             CREATE TABLE IF NOT EXISTS guests (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                firstName TEXT NOT NULL,
-                lastName TEXT NOT NULL,
-                email TEXT NOT NULL UNIQUE,
-                phone TEXT,
+                visitorid INTEGER NOT NULL,
+                firstname TEXT NOT NULL,
+                lastname TEXT NOT NULL,
                 company TEXT,
-                onSite BOOLEAN NOT NULL,
-                checkInTime DATETIME DEFAULT CURRENT_TIMESTAMP,
-                checkOutTime DATETIME DEFAULT CURRENT_TIMESTAMP
+                phone TEXT,
+                email TEXT NOT NULL UNIQUE,
+                onsite INTEGER NOT NULL,
+                checkInTime TEXT DEFAULT CURRENT_TIMESTAMP,
+                checkOutTime TEXT
                 )`
             )
 

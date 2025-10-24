@@ -5,17 +5,23 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 import express, { Express } from 'express';
 import guestRegistryDB from './database/database';
 import guestRoutes from './routes/guestRoutes';
+import guestServices from './services/GuestServices';
 
 guestRegistryDB.initializeDatabase();
 
-const server: Express = express();
-const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+let data = guestServices.allGuests();
 
-server.use(express.json());
-server.use(express.static(path.join(__dirname, 'client')));
+console.log(Object.keys(data[0]));
+console.log(data);
 
-server.use('/api', guestRoutes);
+// const server: Express = express();
+// const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
-server.listen(PORT, () => {
-  console.log(`Guest Registry Server is running on port ${PORT}`);
-});
+// server.use(express.json());
+// server.use(express.static(path.join(__dirname, 'client')));
+
+// server.use('/api', guestRoutes);
+
+// server.listen(PORT, () => {
+//   console.log(`Guest Registry Server is running on port ${PORT}`);
+// });
