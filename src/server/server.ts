@@ -9,19 +9,14 @@ import guestServices from './services/GuestServices';
 
 guestRegistryDB.initializeDatabase();
 
-let data = guestServices.allGuests();
+const server: Express = express();
+const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
-console.log(Object.keys(data[0]));
-console.log(data);
+server.use(express.json());
+server.use(express.static(path.join(__dirname, 'client')));
 
-// const server: Express = express();
-// const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+server.use('/api', guestRoutes);
 
-// server.use(express.json());
-// server.use(express.static(path.join(__dirname, 'client')));
-
-// server.use('/api', guestRoutes);
-
-// server.listen(PORT, () => {
-//   console.log(`Guest Registry Server is running on port ${PORT}`);
-// });
+server.listen(PORT, () => {
+  console.log(`Guest Registry Server is running on port ${PORT}`);
+});
