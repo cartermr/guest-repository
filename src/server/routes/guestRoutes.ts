@@ -41,6 +41,7 @@ router.get('/guest/:id/onsite', (req: Request, res: Response) => {
 router.post('/guest', (req: Request, res: Response) => {
     const guestData = req.body;
     // Save guestData to the database
+    guestServices.newGuest(guestData.visitorid, guestData.firstname, guestData.lastname, guestData.company, guestData.phone, guestData.email);
     res.status(201).json({ message: "Guest created successfully", data: guestData });
 })
 

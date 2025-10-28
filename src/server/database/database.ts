@@ -35,8 +35,17 @@ class GuestRegistryDatabase extends DatabaseSync {
                 )`
             )
 
+        const createUserTable = this.prepare(`
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                passwordHash TEXT NOT NULL,
+                email TEXT NOT NULL UNIQUE
+            )`
+        )
+
         try {
             createGuestTable.run()
+            createUserTable.run()
             console.log('Database tables created successfully.')
         } catch (error) {
             console.error('Error creating database tables:', error)
